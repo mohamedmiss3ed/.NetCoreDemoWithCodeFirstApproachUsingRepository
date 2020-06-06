@@ -14,9 +14,9 @@ namespace NetCoreLastLabDemoWithRepositoryAndCodeFirstApproach.Controllers
     {
         DepartmentManger departmentManger;
 
-        public DepartmentsController(Repository<Department> _departmentManger)
+        public DepartmentsController(DepartmentManger departmentManger)
         {
-            departmentManger = (DepartmentManger)_departmentManger;
+           this.departmentManger =departmentManger;
         }
 
        

@@ -17,14 +17,7 @@ namespace NetCoreLastLabDemoWithRepositoryAndCodeFirstApproach.Controllers
         {
             _context = context;
         }
-     /*   DepartmentManger departmentManger;
-        CourseManger courseManger;
-        public CoursesController(Repository<Course> _courseManager, Repository<Department> _departmentManger)
-        {
-            departmentManger = (DepartmentManger)_departmentManger;
-            courseManger = (CourseManger)_courseManager;
-        }
-*/
+  
         public async Task<IActionResult> Index()
         {
             var studentManagmentSystemDB = _context.Courses.Include(c => c.Department);
@@ -142,8 +135,7 @@ namespace NetCoreLastLabDemoWithRepositoryAndCodeFirstApproach.Controllers
             return View(course);
         }
 
-        // POST: Courses/Delete/5
-        [HttpPost, ActionName("Delete")]
+         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

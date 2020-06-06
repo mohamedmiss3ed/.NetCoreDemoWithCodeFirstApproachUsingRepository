@@ -15,11 +15,11 @@ namespace NetCoreLastLabDemoWithRepositoryAndCodeFirstApproach.Controllers
         StudentManger studentManger;
         DepartmentManger departmentManger;
        // StudentManagmentSystemDB _context;
-        public StudentsController(Repository<Student> _studentManger,Repository<Department> _departmentManger)
+        public StudentsController(StudentManger studentManger, DepartmentManger departmentManger)
         {
            
-            studentManger = (StudentManger)_studentManger;
-            departmentManger = (DepartmentManger)_departmentManger;
+           this.studentManger = studentManger;
+            this.departmentManger = departmentManger;
         }
         
 
@@ -28,9 +28,7 @@ namespace NetCoreLastLabDemoWithRepositoryAndCodeFirstApproach.Controllers
         {
 
 
-            // var studentManagmentSystemDB = _context.Students.Include(s => s.Department);
-            // return View(await studentManagmentSystemDB.ToListAsync());
-            return View( studentManger.GetAllStudent().ToList<Student>());
+                  return View( studentManger.GetAllStudent().ToList<Student>());
         }
 
    

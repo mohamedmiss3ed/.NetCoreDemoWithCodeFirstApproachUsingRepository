@@ -28,13 +28,10 @@ namespace NetCoreLastLabDemoWithRepositoryAndCodeFirstApproach
         {
             services.AddDbContext<StudentManagmentSystemDB>(option => option.UseSqlServer(Configuration.GetConnectionString("mycon")));
             //services.AddTransient<IRepository<TEntity>, Repository<TEntity>>();
-            services.AddTransient<Repository<Student>,StudentManger>();
-            services.AddTransient<Repository<Department>, DepartmentManger>();
+            services.AddTransient<StudentManger>();
+            services.AddTransient< DepartmentManger>();
 
-            services.AddTransient<IRepository<Student>, Repository<Student>>();
-            services.AddTransient<IRepository<Department>, Repository<Department>>();
-            services.AddTransient<IRepository<Course>, Repository<Course>>();
-            services.AddTransient<IRepository<StudentCourse>, Repository<StudentCourse>>();
+       
 
             services.AddControllersWithViews();
         }
@@ -63,7 +60,7 @@ namespace NetCoreLastLabDemoWithRepositoryAndCodeFirstApproach
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Students}/{action=Index}/{id?}");
             });
         }
     }
